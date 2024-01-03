@@ -6,6 +6,8 @@ on:
         required: true
       sha:
         required: true
+      fail: 
+        default: "ok"
 
 jobs:
   myEvent:
@@ -19,3 +21,6 @@ jobs:
       - name: Pause for 25 seconds
         run: |
           sleep 25
+      - uses: actions/checkout@master
+      - name: Pause for 25 seconds
+      - run: "[[ \"${{ github.event.inputs.fail }}\" == \"ok\" ]]"
