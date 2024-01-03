@@ -7,7 +7,7 @@ on:
       sha:
         required: true
       fail: 
-        type: number
+        type: string
         default: "0"
 
 jobs:
@@ -21,5 +21,7 @@ jobs:
       - name: Pause for 25 seconds
         run: |
           sleep 25
+      - name: say
+        run: echo ${{ github.event.inputs.fail }}
       - name: exit
-        run: exit ${{ github.event.inputs.code }}
+        run: exit ${{ github.event.inputs.fail }}
