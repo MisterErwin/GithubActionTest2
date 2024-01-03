@@ -23,4 +23,5 @@ jobs:
           sleep 25
       - uses: actions/checkout@master
       - name: Pause for 25 seconds
-      - run: "[[ \"${{ github.event.inputs.fail }}\" == \"ok\" ]]"
+        run: | 
+          "[[ \"${{ github.event.inputs.fail }}\" == \"ok\" ]]"
