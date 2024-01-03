@@ -7,7 +7,8 @@ on:
       sha:
         required: true
       fail: 
-        default: "ok"
+        type: number
+        default: "0"
 
 jobs:
   myEvent:
@@ -17,11 +18,8 @@ jobs:
         with:
           ref: ${{ github.event.inputs.ref }}
       - run: echo ${{ github.event.inputs.sha }}
-      - uses: actions/checkout@master
       - name: Pause for 25 seconds
         run: |
           sleep 25
-      - uses: actions/checkout@master
-      - name: Pause for 25 seconds
-        run: | 
-          "[[ \"${{ github.event.inputs.fail }}\" == \"ok\" ]]"
+      - name: exit
+        run: exit ${{ github.event.inputs.code }}
